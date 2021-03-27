@@ -9,13 +9,13 @@ Any fancy advanced graphics is beyond the scope of this repo, this is just the b
 #include "pico/stdlib.h"
 #include "SSH1106_SPI_Lite.h"
 ...
-    SSH1106 oled;
-    oled.init();
-    
-    // draw some nice pixels
-    oled.drawPixel(10, 10, 1);
-    oled.drawPixel(11, 11, 1);
-    oled.drawPixel(12, 12, 1);
-    
-    oled.display();
+SSH1106 oled;
+oled.init();
+
+// draw some nice pixels
+oled.drawPixel(10, 10, 1);
+oled.drawPixel(11, 11, 1);
+oled.drawPixel(12, 12, 1);
+
+oled.display();
 ```
