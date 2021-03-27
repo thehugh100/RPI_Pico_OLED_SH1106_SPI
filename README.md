@@ -20,4 +20,14 @@ oled.drawPixel(12, 12, 1);
 ...
 // Send our screenbuffer to the OLED
 oled.display();
+
+sleep_ms(1000); //wait some time
+
+oled.clear();
+//draw some fancier pixels
+oled.drawPixel(20, 20, 1);
+oled.drawPixel(21, 21, 1);
+oled.drawPixel(22, 22, 1);
+
+oled.display();
 ```
