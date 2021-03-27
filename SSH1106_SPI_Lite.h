@@ -53,7 +53,8 @@ public:
     void command(uint8_t c);
     void drawPixel(uint8_t x, uint8_t y, uint8_t color);
     void display();
-    
+    void clear();
+
 private:
     uint8_t sclk_pin_;
     uint8_t mosi_pin_;

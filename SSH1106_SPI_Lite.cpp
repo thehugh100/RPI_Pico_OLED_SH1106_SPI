@@ -96,8 +96,7 @@ void SSH1106::init()
     command(SSH1106_DISPLAYON);
 
     //init buffer
-    for(int i = 0; i < bufSize; ++i)
-        buffer[i] = 0;
+    clear();
 }
 
 void SSH1106::drawPixel(uint8_t x, uint8_t y, uint8_t color)
@@ -141,6 +140,12 @@ void SSH1106::display()
             }
         }
     }
+}
+
+void SSH1106::clear()
+{
+    for(int i = 0; i < bufSize; ++i)
+        buffer[i] = 0;
 }
 
 SSH1106::~SSH1106()
