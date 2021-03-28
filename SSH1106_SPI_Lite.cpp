@@ -116,12 +116,11 @@ void SSH1106::display()
     command(SSH1106_SETSTARTLINE | 0x0);
 	
 	uint8_t height=64;
-	uint8_t width=132; 
+	uint8_t width=128; 
 	uint8_t m_row = 0;
 	uint8_t m_col = 2;
 	
 	height >>= 3;
-	width >>= 3;
 
 	int p = 0;
 	
@@ -132,13 +131,9 @@ void SSH1106::display()
         command(0xB0 + i + m_row);
         command(m_col & 0xf);
         command(0x10 | (m_col >> 4));
-        
-        for( j = 0; j < 8; j++)
-        {        
-            for ( k = 0; k < width; k++, p++) {
-                spi_write_blocking(spiChan, &buffer[p], 1);
-            }
-        }
+             
+        spi_write_blocking(spiChan, &buffer[p], width);
+        p += width;
     }
 }
 
