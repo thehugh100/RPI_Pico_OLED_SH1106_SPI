@@ -92,6 +92,12 @@ void SSH1106::init()
     command(0x40);
     command(SSH1106_DISPLAYALLON_RESUME);
     command(SSH1106_NORMALDISPLAY);
+    
+
+    command(SSH1106_SETPRECHARGE); // max pwm
+    command(0x0F);
+
+    command(0x33); // max charge pump voltage
 
     command(SSH1106_DISPLAYON);
 
