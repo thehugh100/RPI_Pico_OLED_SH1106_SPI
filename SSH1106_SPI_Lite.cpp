@@ -28,7 +28,7 @@ void SSH1106::init()
     gpio_init_mask(1 << sclk_pin_ | 1 << mosi_pin_ | 1 << cs_pin_ | 1 << dc_pin_ | 1 << rst_pin_);
     gpio_set_dir(rst_pin_, GPIO_OUT);
     gpio_put(rst_pin_, 0);
-    spi_init(spiChan, 8000 * 1000); //spi bus speed
+    spi_init(spiChan, 32000 * 1000); //spi bus speed 32MHZ
     gpio_set_function(mosi_pin_, GPIO_FUNC_SPI);
     gpio_set_function(sclk_pin_, GPIO_FUNC_SPI);
     gpio_set_dir(cs_pin_, GPIO_OUT);
@@ -103,8 +103,8 @@ void SSH1106::drawPixel(uint8_t x, uint8_t y, uint8_t color)
 {
     switch (color) 
     {
-      case 0:   buffer[x+ (y/8)*SSH1106_LCDWIDTH] &= ~(1 << (y&7)); break; //black
-      case 1:   buffer[x+ (y/8)*SSH1106_LCDWIDTH] |=  (1 << (y&7)); break; //white
+      case 0: buffer[x+ (y/8)*SSH1106_LCDWIDTH] &= ~(1 << (y&7)); break; //black
+      case 1: buffer[x+ (y/8)*SSH1106_LCDWIDTH] |=  (1 << (y&7)); break; //white
       case 2: buffer[x+ (y/8)*SSH1106_LCDWIDTH] ^=  (1 << (y&7)); break; //invert
     }
 }
@@ -123,10 +123,8 @@ void SSH1106::display()
 	height >>= 3;
 
 	int p = 0;
-	
-	uint8_t i, j, k =0;
-	
-    for (i = 0; i < height; i++)
+		
+    for (uint8_t i = 0; i < height; i++)
     {
         command(0xB0 + i + m_row);
         command(m_col & 0xf);
