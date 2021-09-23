@@ -1,4 +1,4 @@
-# RPI_Pico_OLED_SSH1106_SPI
+# RPI_Pico_OLED_SH1106_SPI
 A quick and dirty driver for the SSH1106 SPI OLED modules for the Raspberry Pi Pico
 
 Any fancy advanced graphics is beyond the scope of this repo, this is just the bare minimum i.e. a screenbuffer and a way to plot pixels.
